@@ -19,7 +19,7 @@ export default function Home() {
     // Navigate to demo page with both project ID and token as query parameters
     const params = new URLSearchParams({
       projectId: projectId,
-      token: token,
+      authToken: token,
     });
     navigate(`/demo?${params.toString()}`);
   };

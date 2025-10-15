@@ -11,10 +11,10 @@ export function meta({}: Route.MetaArgs) {
 export default function Demo() {
   const [searchParams] = useSearchParams();
   const projectId = searchParams.get("projectId");
-  const token = searchParams.get("token");
+  const token = searchParams.get("authToken");
 
   // Construct the iframe URL with the query parameters
-  const iframeUrl = `http://localhost:3000/iframe/research-manager/${projectId}/plan?authToken=${encodeURIComponent(
+  const iframeUrl = `https://app.dev.metaforms.ai/iframe/research-manager/${projectId}/plan?authToken=${encodeURIComponent(
     token || ""
   )}`;
 
