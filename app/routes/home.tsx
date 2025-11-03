@@ -10,15 +10,13 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const [projectId, setProjectId] = useState("");
   const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to demo page with both project ID and token as query parameters
+    // Navigate to demo page with token as query parameter
     const params = new URLSearchParams({
-      projectId: projectId,
       authToken: token,
     });
     navigate(`/demo?${params.toString()}`);
@@ -35,33 +33,18 @@ export default function Home() {
             onSubmit={handleSubmit}
             className="rounded-3xl border border-gray-200 p-6 space-y-4"
           >
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label htmlFor="projectId" className="block text-sm font-medium text-gray-700">
-                  Project ID:
-                </label>
-                <input
-                  id="projectId"
-                  type="text"
-                  value={projectId}
-                  onChange={(e) => setProjectId(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter project ID..."
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="token" className="block text-sm font-medium text-gray-700">
-                  Token:
-                </label>
-                <input
-                  id="token"
-                  type="text"
-                  value={token}
-                  onChange={(e) => setToken(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter token..."
-                />
-              </div>
+            <div className="space-y-2">
+              <label htmlFor="token" className="block text-sm font-medium text-gray-700">
+                Token:
+              </label>
+              <input
+                id="token"
+                type="text"
+                value={token}
+                onChange={(e) => setToken(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Enter token..."
+              />
             </div>
             <button
               type="submit"

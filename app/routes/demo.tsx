@@ -10,13 +10,16 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Demo() {
   const [searchParams] = useSearchParams();
-  const projectId = searchParams.get("projectId");
   const token = searchParams.get("authToken");
 
-  // Construct the iframe URL with the query parameters
-  const iframeUrl = `https://app.dev.metaforms.ai/iframe/research-manager/${projectId}/plan?authToken=${encodeURIComponent(
+  // // Construct the iframe URL with the token parameter
+  const iframeUrl = `http://localhost:3000/iframe/research-manager?authToken=${encodeURIComponent(
     token || ""
-  )}`;
+  )}&domainHash=213231321321321`;
+
+  // const iframeUrl = `https://app.dev.metaforms.ai/iframe/research-manager?authToken=${encodeURIComponent(
+  //   token || ""
+  // )}`;
 
   console.log("iframeUrl: ", iframeUrl);
   return (
